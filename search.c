@@ -1,6 +1,6 @@
 #include "search.h"
 
-void NameOfFiles(char argv[])
+int NameOfFiles(char argv[])
 {
     printf(argv);
     FILE *NamesOfFiles;
@@ -21,4 +21,5 @@ void NameOfFiles(char argv[])
         fprintf(NamesOfFiles, "%s\n", entry->d_name);
     }
     closedir(mydir);
+    return 0;
 }

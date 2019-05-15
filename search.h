@@ -2,5 +2,5 @@
 #include <string.h>
 #include <dirent.h>
 
-void NameOfFiles(char argv[]);
+int NameOfFiles(char argv[]);
 void Search(name,w_search);
