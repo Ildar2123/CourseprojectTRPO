@@ -3,4 +3,4 @@
 #include <dirent.h>
 
 int NameOfFiles(char argv[]);
-void Search(char name[],char w_search[]);
+void Search(char w_search[]);
