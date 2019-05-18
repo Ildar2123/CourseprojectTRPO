@@ -18,10 +18,26 @@ int NameOfFiles(char argv[])
             fprintf(NamesOfFiles, "%s\n", entry->d_name);
     }
     closedir(mydir);
+    fclose(NamesOfFiles);
     return 0;
 }
 
-void Search(char name[], char w_search[])
+void Search(char w_search[])
 {
-    printf("hello, world");
+    FILE *NamesOfFiles;
+    NamesOfFiles = fopen("./txt/NamesOfFiles.txt", "r");
+    fseek(NamesOfFiles,0,SEEK_SET);
+    char FileName[256];
+
+    if ((NamesOfFiles = fopen("./txt/NamesOfFiles.txt", "r"))==NULL){
+        printf("UPS TT\nIt`s not working normally\n");
+    }
+    else{
+        while(!feof(NamesOfFiles)){
+            
+            fgets(FileName,254,NamesOfFiles);
+            printf("%s\n",FileName);
+        }
+    }
+    fclose(NamesOfFiles);
 }
