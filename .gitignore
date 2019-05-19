@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.o
 main
 input*
@@ -7,3 +8,14 @@ test*
 .123
 prog
 /123
+||||||| merged common ancestors
+=======
+*.o
+main
+input*
+a.out
+struct*git
+.123
+prog
+/123
+>>>>>>> test_ildar
