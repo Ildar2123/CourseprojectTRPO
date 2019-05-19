@@ -55,21 +55,32 @@ void Search(char where_search[], char what_search[]) {
 
     for (int i = 1; i < c; i++) {
       FILE *File;
+      int str=0,k_v=0;
       strcpy(fullway, "\0");
       strcpy(FileName, "\0");
       fgets(FileName, 510, NamesOfFiles);
       strcat(fullway, way);
       strcat(fullway, FileName);
-      fullway[strlen(fullway)]='\0';
+      fullway[strlen(fullway)-1]='\0';
       File = fopen(fullway, "r");
       if ((File = fopen(fullway,"r")) == NULL) {
         printf("UPS TT\nIt`s not working normally\n");
-      } else {
-        printf("Hello,world!\n");
+      } else { while (!feof(File)) {
+          entry = NULL;
+          fgets(string, 510, File);
+          str++;
+          entry = strstr(string, what_search);
+          if (entry != NULL) {
+            printf("Строка номер %d : %s\n", str, string);
+            k_v++;
+          }
+        }
+        if (k_v!=0){
+              printf("\n\nДанные из файла %s\n",FileName);
       }
-      fclose(File);
-      printf("%s\n", fullway);
     }
+    fclose(File);
   }
-  fclose(NamesOfFiles);
+}
+fclose(NamesOfFiles);
 }
