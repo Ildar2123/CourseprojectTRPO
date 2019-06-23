@@ -83,4 +83,5 @@ void Search(char where_search[], char what_search[]) {
   }
 }
 fclose(NamesOfFiles);
+return 0;
 }
