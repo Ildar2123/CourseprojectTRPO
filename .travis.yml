@@ -1,4 +1,10 @@
- ist: xenial
-
-script:
-  - git ls-files src/ | xargs clang-format -i && git diff --exit-code
+language: c
+dist: xenial
+compiler: clang
+sudo: false
+script: 
+ - git ls-files src/*.c | xargs clang-format -i src/*.c 
+ - git diff --exit-code
+ - make
+ - make test
+ - ./bin/test
