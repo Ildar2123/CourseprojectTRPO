@@ -22,9 +22,4 @@ CTEST(Search, GetFileNames_ReturnsMinusOne) {
 	ASSERT_EQUAL(test, -1);
 }
 
-CTEST(Search, Search_GetIntMainVoid) {
-	char findStr[] = "int main(void)";
-	char path[] = "TestData/";
-	
-	Search(path, findStr);
-}
+ 
