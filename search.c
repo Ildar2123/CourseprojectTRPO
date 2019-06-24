@@ -32,7 +32,7 @@ void Search(char where_search[], char what_search[]) {
   char fullway[512] = "\0";
   char string[512];
   char file[512] = "\0";
-  int c = 0, str = 0, k_f = 0;
+  int c = 0;
   char *entry;
   strcat(file, where_search);
   strcat(file, "/");
@@ -83,5 +83,5 @@ void Search(char where_search[], char what_search[]) {
   }
 }
 fclose(NamesOfFiles);
-return 0;
+
 }
