@@ -4,4 +4,4 @@ all:
 
 .PHONY: test
 test:
-	gcc -Wall -I./vendor/ search.c UnitTests/tmain.c UnitTests/tests.c -o UnitTestsProg
+	gcc -Wall -I./ search.c test/tmain.c test/tests.c -o UnitTestsProg
