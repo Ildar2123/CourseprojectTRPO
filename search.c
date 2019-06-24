@@ -14,10 +14,10 @@ int NameOfFiles(char argv[]) {
     return -1;
   }
   struct dirent *entry;
-  while (entry = readdir(mydir)) {
-    if ((strcmp(entry->d_name, "NamesOfFiles.txt")) &&
-        (strcmp(entry->d_name, ".")) && (strcmp(entry->d_name, "..")))
-      fprintf(NamesOfFiles, "%s\n", entry->d_name);
+  while ((entry = readdir(mydir)) != NULL) {
+    if ((strcmp((entry->d_name), "NamesOfFiles.txt")) &&
+        (strcmp((entry->d_name), ".")) && (strcmp((entry->d_name), "..")))
+      fprintf(NamesOfFiles, "%s\n", (entry->d_name));
   }
   closedir(mydir);
   fclose(NamesOfFiles);
@@ -27,8 +27,8 @@ int NameOfFiles(char argv[]) {
 void Search(char where_search[], char what_search[]) {
   FILE *NamesOfFiles;
 
-  char FileName[256]="\0";
-  char way[256]="\0";
+  char FileName[256] = "\0";
+  char way[256] = "\0";
   char fullway[512] = "\0";
   char string[512];
   char file[512] = "\0";
@@ -55,17 +55,18 @@ void Search(char where_search[], char what_search[]) {
 
     for (int i = 1; i < c; i++) {
       FILE *File;
-      int str=0,k_v=0;
+      int str = 0, k_v = 0;
       strcpy(fullway, "\0");
       strcpy(FileName, "\0");
       fgets(FileName, 510, NamesOfFiles);
       strcat(fullway, way);
       strcat(fullway, FileName);
-      fullway[strlen(fullway)-1]='\0';
+      fullway[strlen(fullway) - 1] = '\0';
       File = fopen(fullway, "r");
-      if ((File = fopen(fullway,"r")) == NULL) {
+      if ((File = fopen(fullway, "r")) == NULL) {
         printf("UPS TT\nIt`s not working normally\n");
-      } else { while (!feof(File)) {
+      } else {
+        while (!feof(File)) {
           entry = NULL;
           fgets(string, 510, File);
           str++;
@@ -75,13 +76,12 @@ void Search(char where_search[], char what_search[]) {
             k_v++;
           }
         }
-        if (k_v!=0){
-              printf("\n\nДанные из файла %s\n",FileName);
+        if (k_v != 0) {
+          printf("\n\nДанные из файла %s\n", FileName);
+        }
       }
+      fclose(File);
     }
-    fclose(File);
   }
-}
-fclose(NamesOfFiles);
-
+  fclose(NamesOfFiles);
 }
