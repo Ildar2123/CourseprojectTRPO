@@ -3,7 +3,7 @@ dist: xenial
 compiler: clang
 sudo: false
 script: 
- - git ls-files src/*.c | xargs clang-format -i src/*.c
+ - git ls-files *.c | xargs clang-format -i *.c
  - git diff --exit-code
  - make
  - make test
