@@ -9,14 +9,12 @@ int NameOfFiles(char argv[]) {
   NamesOfFiles = fopen(fullway, "w+");
 
   DIR *mydir = opendir(argv);
-  if (mydir == NULL)
-  {
+  if (mydir == NULL) {
     perror("opendir");
     return -1;
   }
   struct dirent *entry;
-  while ((entry = readdir(mydir)) != NULL) 
-  {
+  while ((entry = readdir(mydir)) != NULL) {
     if ((strcmp((entry->d_name), "NamesOfFiles.txt")) &&
         (strcmp((entry->d_name), ".")) && (strcmp((entry->d_name), "..")))
       fprintf(NamesOfFiles, "%s\n", (entry->d_name));
@@ -25,9 +23,7 @@ int NameOfFiles(char argv[]) {
   fclose(NamesOfFiles);
   return 0;
 }
-
-void Search(char where_search[], char what_search[])
-{
+void Search(char where_search[], char what_search[]) {
   FILE *NamesOfFiles;
 
   char FileName[256] = "\0";
@@ -45,12 +41,10 @@ void Search(char where_search[], char what_search[])
   strcat(way, where_search);
   strcat(way, "/");
 
-  if ((NamesOfFiles = fopen(file, "r")) == NULL) 
-  {
+  if ((NamesOfFiles = fopen(file, "r")) == NULL) {
     printf("UPS TT\nIt`s not working normally\n");
   } else {
-    while (!feof(NamesOfFiles)) 
-    {
+    while (!feof(NamesOfFiles)) {
       fgets(FileName, 510, NamesOfFiles);
 
       c++;
@@ -58,8 +52,7 @@ void Search(char where_search[], char what_search[])
 
     fseek(NamesOfFiles, 0, SEEK_SET);
 
-    for (int i = 1; i < c; i++) 
-    {
+    for (int i = 1; i < c; i++) {
       FILE *File;
       int str = 0, k_v = 0;
       strcpy(fullway, "\0");
@@ -69,18 +62,15 @@ void Search(char where_search[], char what_search[])
       strcat(fullway, FileName);
       fullway[strlen(fullway) - 1] = '\0';
       File = fopen(fullway, "r");
-      if ((File = fopen(fullway, "r")) == NULL)
-      {
+      if ((File = fopen(fullway, "r")) == NULL) {
         printf("UPS TT\nIt`s not working normally\n");
       } else {
-        while (!feof(File)) 
-        {
+        while (!feof(File)) {
           entry = NULL;
           fgets(string, 510, File);
           str++;
           entry = strstr(string, what_search);
-          if (entry != NULL) 
-          {
+          if (entry != NULL) {
             printf("Строка номер %d : %s\n", str, string);
             k_v++;
           }
